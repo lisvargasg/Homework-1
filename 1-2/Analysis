@@ -1,14 +1,14 @@
 # Meta --------------------------------------------------------------------
 # Author:        Lisbeth Vargas
 # Date Created:  1/29/2025
-# Date Edited:   1/29/2025
+# Date Edited:   1/31/2025
 # Homework 1-2
 
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, stringr, readxl, data.table, gdata, scales)
 
-full.ma.data <- readRDS("ECON 470/Homework 1/1-1/data/output/plan_data.rds")
-contract.service.area <- readRDS("ECON 470/Homework 1/1-1/data/output/service_area.rds")
+full.ma.data <- readRDS("Homework-1/1-1/data/output/plan_data.rds")
+contract.service.area <- readRDS("Homework-1/1-1/data/output/service_area.rds")
 
 # Create objects for markdown
 plan.type.table <- plan.data %>% group_by(plan_type) %>% count() %>% arrange(-n)
@@ -29,4 +29,4 @@ final.data <- final.plans %>%
   filter(!is.na(enrollment))
 
 rm(list=c("full.ma.data", "contract.service.area", "final.data"))
-save.image("ECON 470/Homework 1/1-2/hwk1_workspace.Rdata")
+save.image("Homework-1/1-2/hwk1_workspace.Rdata")

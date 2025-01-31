@@ -27,8 +27,13 @@ pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl, hrbrthemes, 
 #| include: false
 #| eval: true
 
-load("/Users/lisbethvargas/Desktop/GitHub/ECON 470/Homework 1/1-2/hwk1_workspace.Rdata")
+load("/Users/lisbethvargas/Desktop/GitHub/Homework-1/1-2/hwk1_workspace.Rdata")
 ```
+
+
+The following is my submission for Homework 1. Note that the setup and analysis for these responses are in a seperate `R` script. The GitHub repository for this work is available [here](https://github.com/lisvargasg/Homework-1.git).
+
+
 \newpage
 # Building the Data
 Answer the following based on our initial, simplified dataset of enrollments, plan types, and service areas:

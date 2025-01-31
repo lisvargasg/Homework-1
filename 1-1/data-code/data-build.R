@@ -1,7 +1,7 @@
 # Meta --------------------------------------------------------------------
 # Author:        Lisbeth Vargas
 # Date Created:  1/28/2025
-# Date Edited:   1/28/2025
+# Date Edited:   1/31/2025
 # Notes:         R file to build Medicare Advantage dataset
 
 
@@ -11,7 +11,7 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, stringr, readxl, data.table, gdata)
  
  ## Basic contract/plan information
-  contract.info=read_csv("ECON 470/Homework 1/1-1/data/input/CPSC_Contract_Info_2015_01.csv",
+  contract.info=read_csv("Homework-1/1-1/data/input/CPSC_Contract_Info_2015_01.csv",
                          skip=1,
                          col_names = c("contractid","planid","org_type","plan_type",
                                        "partd","snp","eghp","org_name","org_marketing_name",
@@ -37,7 +37,7 @@ pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, stringr, readxl, data.table
     select(-id_count)
 
    ## Enrollments per plan
-  enroll.info=read_csv("ECON 470/Homework 1/1-1/data/input/CPSC_Enrollment_Info_2015_01.csv",
+  enroll.info=read_csv("Homework-1/1-1/data/input/CPSC_Enrollment_Info_2015_01.csv",
                        skip=1,
                        col_names = c("contractid","planid","ssa","fips","state","county","enrollment"),
                        col_types = cols(
@@ -61,11 +61,11 @@ pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, stringr, readxl, data.table
     group_by(contractid) %>%
     fill(org_type,org_name,org_marketing_name,parent_org)
 
-saveRDS(plan.data, "ECON 470/Homework 1/1-1/data/output/plan_data.rds")
+saveRDS(plan.data, "Homework-1/1-1/data/output/plan_data.rds")
 
 
  ## Pull service area data by contract/month
-  service.area=read_csv("ECON 470/Homework 1/1-1/data/input/MA_Cnty_SA_2015_01.csv",skip=1,
+  service.area=read_csv("Homework-1/1-1/data/input/MA_Cnty_SA_2015_01.csv",skip=1,
       col_names=c("contractid","org_name","org_type","plan_type","partial","eghp",
                                       "ssa","fips","county","state","notes"),
       col_types = cols(
@@ -95,7 +95,7 @@ service.area = service.area %>%
   fill(plan_type, partial, eghp, org_type, org_name)
 
    ## Data build 2
-   saveRDS(service.area, "ECON 470/Homework 1/1-1/data/output/service_area.rds")
+   saveRDS(service.area, "Homework-1/1-1/data/output/service_area.rds")
    
 
 ## FINAL MERGE
@@ -109,4 +109,4 @@ final.data <- plan.data %>%
            (planid < 800 | planid >= 900) &
            !is.na(planid) & !is.na(fips))
 
-saveRDS(final.data,"ECON 470/Homework 1/1-1/data/output/final_data.rds")
+saveRDS(final.data,"Homework-1/1-1/data/output/final_data.rds")
